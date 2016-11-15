@@ -1,17 +1,28 @@
-!!!
+!!! 5
 %html
-  %head
-    %title Rotten Potatoes!
-    = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
-
-  %body
-    %h1.title Rotten Potatoes!
-    #main
-      - if flash[:notice]
-        #notice.message= flash[:notice]
-      - elsif flash[:warning]
-        #warning.message= flash[:warning]
-
-      = yield
+%head
+  %title Catering App
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+  
+%body
+  %nav.navbar.navbar-default
+    .container
+      .navbar-brand= link_to "Yellow Team", root_path
+      
+      %ul.nav.navbar-nav.navbar-right
+        %li= link_to "Home", root_path
+        %li= link_to "Menu", welcome_menu_path
+        %li= link_to "Main Course", root_path
+        %li= link_to "Reviews", welcome_reviews_path
+        %li= link_to "About Us", welcome_about_path
+        %li= link_to "Back", root_path
+  
+  
+  .container
+    -flash.each do|name, msg|
+      = content_tag :div, msg, class: "alert"
+      
+      
+    = yield
