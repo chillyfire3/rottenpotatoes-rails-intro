@@ -1,0 +1,4 @@
+#app/model/Appetizer base file
+
+class Appetizer < ActiveRecord::Base
+end
